@@ -7,15 +7,15 @@ namespace Stemmer;
 
 public class Stemmer : IStemmer 
 {
-    protected IDictionary<string, string> dictionary;
+    protected HashSet<string> dictionary;
     protected VisitorProvider visitorProvider;
-    public Stemmer(IDictionary<string, string> dictionary)
+    public Stemmer(HashSet<string> dictionary)
     {
         this.dictionary = dictionary;
         this.visitorProvider = new VisitorProvider();
     }
 
-    public IDictionary<string, string> GetDictionary()
+    public HashSet<string> GetDictionary()
     {
         return dictionary;
     }
@@ -27,7 +27,7 @@ public class Stemmer : IStemmer
 
         foreach(string word in normalized.Split(' '))
         {
-            stems.Add(word);
+            stems.Add(StemWord(word));
         }
         return String.Join(' ', stems);
     }
@@ -72,7 +72,7 @@ public class Stemmer : IStemmer
         string rootWord1 = StemSingularWord(word1);
         string rootWord2 = StemSingularWord(word2);
 
-        if (dictionary.ContainsKey(word2) && rootWord2 == word2)
+        if (dictionary.Contains(word2) && rootWord2 == word2)
         {
             rootWord2 = StemSingularWord("me" + word2);
         }

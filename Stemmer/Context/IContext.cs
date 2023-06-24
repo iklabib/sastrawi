@@ -7,7 +7,7 @@ public interface IContext
 
     public void SetCurrentWord(string word);
 
-    public IDictionary<string, string> GetDictionary();
+    public HashSet<string> GetDictionary();
 
     public void StopProcess();
 

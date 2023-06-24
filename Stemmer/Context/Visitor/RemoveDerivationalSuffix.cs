@@ -1,14 +1,13 @@
-using Context;
 using System.Text.RegularExpressions;
+using Context;
 
 namespace Visitor;
 
-class RemoveInflectionalParticle : IVisitor
+class RemoveDerivationalSuffix : IVisitor
 {
     public void Visit(IContext context)
     {
-        string result = Remove(context.GetCurrentWord());
-
+        string result = RemoveSuffix(context.GetCurrentWord());
         if (result == context.GetCurrentWord())
             return;
 
@@ -19,16 +18,15 @@ class RemoveInflectionalParticle : IVisitor
             context.GetCurrentWord(),
             result,
             removedPart,
-            "P"
+            "DS"
         );
 
         context.AddRemoval(removal);
         context.SetCurrentWord(result);
     }
-
-    public string Remove(string word)
+    public string RemoveSuffix(string word)
     {
-        Regex regex = new Regex(@"-*(lah|kah|tah|pun)$");
+        Regex regex = new Regex(@"(is|isme|isasi|i|kan|an)$");
         return regex.Replace(word, "", 1);
     }
 }

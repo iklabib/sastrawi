@@ -1,4 +1,5 @@
-namespace Stemmer;
+using Stemmer;
+
 public class CachedStemmer : IStemmer {
     protected IDictionary<string, string> cache;
     protected IStemmer delegatedStemmer;
@@ -30,15 +31,15 @@ public class CachedStemmer : IStemmer {
                 stems.Add(stem);
             }
 
-            return String.Join(' ', stems);
         }
 
-        return text;
+        return String.Join(' ', stems);
     }
 
     public IDictionary<string, string> GetCache()
     {
         // deep copy
-        return cache.ToDictionary(entry => entry.Key, entry => entry.Value);
+        // return cache.ToDictionary(entry => entry.Key, entry => entry.Value);
+        return cache;
     }
 }

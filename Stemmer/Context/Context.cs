@@ -3,12 +3,12 @@ using ConfixStripping;
 
 namespace Context;
 
-class Context : IContext
+class Context : IContext, IVisitable
 {
     protected string originalWord;
     protected string currentWord;
     protected bool processIsStopped;
-    protected IDictionary<string, string> dictionary;
+    protected HashSet<string> dictionary;
     protected VisitorProvider visitorProvider;
     protected List<IRemoval> removals = new();
     protected List<IVisitor> visitors = new();
@@ -18,7 +18,7 @@ class Context : IContext
 
     public Context(
         string originalWord,
-        IDictionary<string, string> dictionary,
+        HashSet<string> dictionary,
         VisitorProvider visitorProvider
     )
     {
@@ -37,12 +37,12 @@ class Context : IContext
         prefixVisitors = visitorProvider.GetPrefixVisitors();
     }
 
-    public IDictionary<string, string> GetDictionary()
+    public HashSet<string> GetDictionary()
     {
         return dictionary;
     }
 
-    public void SetDictionary(IDictionary<string, string> dictionary)
+    public void SetDictionary(HashSet<string> dictionary)
     {
         this.dictionary = dictionary;
     }
@@ -91,9 +91,11 @@ class Context : IContext
     {
         // step 1 - 5
         startStemmingProcess();
+        if (currentWord == "")
+            this.result = originalWord;
 
         // step 6
-        if(dictionary.ContainsKey(currentWord))
+        if(dictionary.Contains(currentWord))
             this.result = currentWord;
         else
             this.result = originalWord;
@@ -101,12 +103,12 @@ class Context : IContext
 
     protected void startStemmingProcess()
     {
-        if (dictionary.ContainsKey(currentWord))
+        if (dictionary.Contains(currentWord))
             return;
 
         acceptVisitors(visitors);
 
-        if(dictionary.ContainsKey(currentWord))
+        if(dictionary.Contains(currentWord))
             return;
 
         var csPrecedenceAdjustmentSpecification = new PrecedenceAdjustmentSpecification();
@@ -118,12 +120,12 @@ class Context : IContext
         {
             // step 4, 5
             removePrefixes();
-            if (dictionary.ContainsKey(currentWord))
+            if (dictionary.Contains(currentWord))
                 return;
             
             // step 2, 3
             removeSuffixes();
-            if (dictionary.ContainsKey(currentWord))
+            if (dictionary.Contains(currentWord))
                 return;
 
             // if the trial is failed, restore the original word
@@ -134,12 +136,12 @@ class Context : IContext
 
         // step 2, 3
         removeSuffixes();
-        if (dictionary.ContainsKey(currentWord))
+        if (dictionary.Contains(currentWord))
             return;
         
         // step 4, 5
         removePrefixes();
-        if (dictionary.ContainsKey(currentWord))
+        if (dictionary.Contains(currentWord))
             return;
 
         // ECS loop pengembalian akhiran
@@ -151,7 +153,7 @@ class Context : IContext
         for(int i = 0; i < 3; ++i)
         {
             acceptPrefixVisitors(prefixVisitors);
-            if(dictionary.ContainsKey(currentWord))
+            if(dictionary.Contains(currentWord))
             {
                 return;
             }
@@ -163,7 +165,7 @@ class Context : IContext
         acceptVisitors(suffixVisitors);
     }
 
-    protected void accept(IVisitor visitor)
+    public void Accept(IVisitor visitor)
     {
         visitor.Visit(this);
     }
@@ -172,8 +174,8 @@ class Context : IContext
     {
         foreach(var visitor in visitors)
         {
-            accept(visitor);
-            if (GetDictionary().ContainsKey(currentWord))
+            Accept(visitor);
+            if (GetDictionary().Contains(currentWord))
                 return currentWord;
 
             if(ProcessIsStopped())
@@ -187,8 +189,8 @@ class Context : IContext
         int removalCount = removals.Count();
         foreach(var visitor in visitors)
         {
-            accept(visitor);
-            if (dictionary.ContainsKey(currentWord))
+            Accept(visitor);
+            if (dictionary.Contains(currentWord))
                 return currentWord;
 
             if(processIsStopped)
@@ -218,7 +220,7 @@ class Context : IContext
 
                 // step 4, 5
                 removePrefixes();
-                if(dictionary.ContainsKey(currentWord))
+                if(dictionary.Contains(currentWord))
                     return;
 
                 SetCurrentWord(removal.GetResult() + "kan");
@@ -231,7 +233,7 @@ class Context : IContext
 
             // step 4, 5
             removePrefixes();
-            if (dictionary.ContainsKey(currentWord))
+            if (dictionary.Contains(currentWord))
                 return;
             
             this.removals = removals.ToList();

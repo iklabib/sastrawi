@@ -1,6 +1,8 @@
 using Context;
 using Visitor;
 using System.Text.RegularExpressions;
+using Disambiguator;
+
 abstract class AbstractDisambiguatePrefixRule : IVisitor {
     protected List<IDisambiguator> disambiguators = new();
     public void Visit(IContext context)
@@ -10,7 +12,7 @@ abstract class AbstractDisambiguatePrefixRule : IVisitor {
         foreach (var disambiguator in disambiguators)
         {
             result = disambiguator.Disambiguate(context.GetCurrentWord());
-            if (dictionary.ContainsKey(result))
+            if (dictionary.Contains(result))
                 break;
         }
 
@@ -28,12 +30,12 @@ abstract class AbstractDisambiguatePrefixRule : IVisitor {
         context.SetCurrentWord(result);
     }
 
-    public void addDisambiguators(List<IDisambiguator> disambiguators)
+    public void AddDisambiguators(List<IDisambiguator> disambiguators)
     {
         this.disambiguators.AddRange(disambiguators);
     }
 
-    public void addDisambiguator(IDisambiguator disambiguator)
+    public void AddDisambiguator(IDisambiguator disambiguator)
     {
         this.disambiguators.Add(disambiguator);
     }

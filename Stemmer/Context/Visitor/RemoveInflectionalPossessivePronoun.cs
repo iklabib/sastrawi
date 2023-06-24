@@ -1,14 +1,14 @@
-using Context;
 using System.Text.RegularExpressions;
+
+using Context;
 
 namespace Visitor;
 
-class RemoveInflectionalParticle : IVisitor
+class RemoveInflectionalPossessivePronoun : IVisitor
 {
     public void Visit(IContext context)
     {
         string result = Remove(context.GetCurrentWord());
-
         if (result == context.GetCurrentWord())
             return;
 
@@ -19,7 +19,7 @@ class RemoveInflectionalParticle : IVisitor
             context.GetCurrentWord(),
             result,
             removedPart,
-            "P"
+            "PP"
         );
 
         context.AddRemoval(removal);
@@ -28,7 +28,7 @@ class RemoveInflectionalParticle : IVisitor
 
     public string Remove(string word)
     {
-        Regex regex = new Regex(@"-*(lah|kah|tah|pun)$");
+        Regex regex = new Regex(@"-*(ku|mu|nya)$");
         return regex.Replace(word, "", 1);
     }
 }
