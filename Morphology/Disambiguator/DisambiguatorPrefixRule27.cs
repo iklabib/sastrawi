@@ -9,7 +9,7 @@ class DisambiguatorPrefixRule27 : IDisambiguator
         var match = Regex.Match(word, @"^pen([cdjstz])(.*)$");
         if (!match.Success)
             return null;
-        
+
         return match.Groups[1].Value + match.Groups[2].Value;
     }
 }

@@ -4,7 +4,7 @@ using Context;
 
 namespace Visitor;
 
-class RemovePlainPrefix: IVisitor
+class RemovePlainPrefix : IVisitor
 {
     public void Visit(IContext context)
     {
@@ -14,13 +14,7 @@ class RemovePlainPrefix: IVisitor
 
         Regex regex = new Regex(result);
         string removedPart = regex.Replace(context.GetCurrentWord(), "", 1);
-        IRemoval removal = new Removal(
-            this, 
-            context.GetCurrentWord(),
-            result,
-            removedPart,
-            "DP"
-        );
+        IRemoval removal = new Removal(this, context.GetCurrentWord(), result, removedPart, "DP");
 
         context.AddRemoval(removal);
         context.SetCurrentWord(result);

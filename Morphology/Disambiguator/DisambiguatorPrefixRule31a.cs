@@ -9,7 +9,7 @@ class DisambiguatorPrefixRule31a : IDisambiguator
         var match = Regex.Match(word, @"^peny([aiueo])(.*)$");
         if (!match.Success)
             return null;
-        
+
         return "ny" + match.Groups[1].Value + match.Groups[2].Value;
     }
 }

@@ -13,17 +13,12 @@ class RemoveDerivationalSuffix : IVisitor
 
         Regex regex = new Regex(result);
         string removedPart = regex.Replace(context.GetCurrentWord(), "", 1);
-        IRemoval removal = new Removal(
-            this, 
-            context.GetCurrentWord(),
-            result,
-            removedPart,
-            "DS"
-        );
+        IRemoval removal = new Removal(this, context.GetCurrentWord(), result, removedPart, "DS");
 
         context.AddRemoval(removal);
         context.SetCurrentWord(result);
     }
+
     public string RemoveSuffix(string word)
     {
         Regex regex = new Regex(@"(is|isme|isasi|i|kan|an)$");

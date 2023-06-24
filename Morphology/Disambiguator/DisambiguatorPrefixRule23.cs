@@ -9,7 +9,7 @@ class DisambiguatorPrefixRule23 : IDisambiguator
         var match = Regex.Match(word, @"^per([bcdfghjklmnpqrstvwxyz])([a-z])(.*)$");
         if (!match.Success)
             return null;
-        
+
         if (Regex.Match(match.Groups[3].Value, @"^er(.*)$").Success)
             return null;
 

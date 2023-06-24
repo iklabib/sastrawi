@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 
 namespace Morphology;
+
 public class InvalidAffixPairSpecification : ISpecification
 {
     public bool IsSatisfiedBy(string word)
@@ -10,8 +11,9 @@ public class InvalidAffixPairSpecification : ISpecification
 
         if (word == "ketahui")
             return false;
-        
-        string[] invalidAffixes = new String[] {
+
+        string[] invalidAffixes = new String[]
+        {
             @"^ber(.*)i$",
             @"^di(.*)an$",
             @"^ke(.*)i$",

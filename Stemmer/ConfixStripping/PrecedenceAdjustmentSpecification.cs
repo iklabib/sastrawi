@@ -1,12 +1,12 @@
 using Specification;
 using System.Text.RegularExpressions;
+
 namespace ConfixStripping;
 
 class PrecedenceAdjustmentSpecification : ISpecification
 {
     public bool IsSatisfiedBy(string value)
     {
-
         var regexRules = new string[]
         {
             "^be(.*)lah$",

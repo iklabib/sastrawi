@@ -6,7 +6,10 @@ class DisambiguatorPrefixRule5 : IDisambiguator
 {
     public string? Disambiguate(string word)
     {
-        var match = Regex.Match(word, @"^be([bcdfghjklmnpqstvwxyz])(er[bcdfghjklmnpqrstvwxyz])(.*)$");
+        var match = Regex.Match(
+            word,
+            @"^be([bcdfghjklmnpqstvwxyz])(er[bcdfghjklmnpqrstvwxyz])(.*)$"
+        );
         if (!match.Success)
             return null;
 

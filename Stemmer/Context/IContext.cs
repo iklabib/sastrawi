@@ -1,4 +1,5 @@
 namespace Context;
+
 public interface IContext
 {
     public string GetOriginalWord();

@@ -16,11 +16,7 @@ class Context : IContext, IVisitable
     protected List<IVisitor> prefixVisitors = new();
     protected string result = string.Empty;
 
-    public Context(
-        string originalWord,
-        HashSet<string> dictionary,
-        VisitorProvider visitorProvider
-    )
+    public Context(string originalWord, HashSet<string> dictionary, VisitorProvider visitorProvider)
     {
         this.originalWord = originalWord;
         this.currentWord = originalWord;
@@ -95,7 +91,7 @@ class Context : IContext, IVisitable
             this.result = originalWord;
 
         // step 6
-        if(dictionary.Contains(currentWord))
+        if (dictionary.Contains(currentWord))
             this.result = currentWord;
         else
             this.result = originalWord;
@@ -108,7 +104,7 @@ class Context : IContext, IVisitable
 
         acceptVisitors(visitors);
 
-        if(dictionary.Contains(currentWord))
+        if (dictionary.Contains(currentWord))
             return;
 
         var csPrecedenceAdjustmentSpecification = new PrecedenceAdjustmentSpecification();
@@ -122,7 +118,7 @@ class Context : IContext, IVisitable
             removePrefixes();
             if (dictionary.Contains(currentWord))
                 return;
-            
+
             // step 2, 3
             removeSuffixes();
             if (dictionary.Contains(currentWord))
@@ -138,7 +134,7 @@ class Context : IContext, IVisitable
         removeSuffixes();
         if (dictionary.Contains(currentWord))
             return;
-        
+
         // step 4, 5
         removePrefixes();
         if (dictionary.Contains(currentWord))
@@ -150,10 +146,10 @@ class Context : IContext, IVisitable
 
     protected void removePrefixes()
     {
-        for(int i = 0; i < 3; ++i)
+        for (int i = 0; i < 3; ++i)
         {
             acceptPrefixVisitors(prefixVisitors);
-            if(dictionary.Contains(currentWord))
+            if (dictionary.Contains(currentWord))
             {
                 return;
             }
@@ -172,13 +168,13 @@ class Context : IContext, IVisitable
 
     protected string acceptVisitors(List<IVisitor> visitors)
     {
-        foreach(var visitor in visitors)
+        foreach (var visitor in visitors)
         {
             Accept(visitor);
             if (GetDictionary().Contains(currentWord))
                 return currentWord;
 
-            if(ProcessIsStopped())
+            if (ProcessIsStopped())
                 return currentWord;
         }
         return "";
@@ -187,13 +183,13 @@ class Context : IContext, IVisitable
     protected string acceptPrefixVisitors(List<IVisitor> visitors)
     {
         int removalCount = removals.Count();
-        foreach(var visitor in visitors)
+        foreach (var visitor in visitors)
         {
             Accept(visitor);
             if (dictionary.Contains(currentWord))
                 return currentWord;
 
-            if(processIsStopped)
+            if (processIsStopped)
                 return currentWord;
 
             if (removals.Count() > removalCount)
@@ -209,24 +205,23 @@ class Context : IContext, IVisitable
         string currentWord = this.currentWord;
 
         var removals = this.removals.AsEnumerable().Reverse();
-        foreach(var removal in removals)
+        foreach (var removal in removals)
         {
             if (isSuffixRemoval(removal))
                 continue;
-            
+
             if (removal.GetRemovedPart() == "kan")
             {
                 SetCurrentWord(removal.GetResult() + "k");
 
                 // step 4, 5
                 removePrefixes();
-                if(dictionary.Contains(currentWord))
+                if (dictionary.Contains(currentWord))
                     return;
 
                 SetCurrentWord(removal.GetResult() + "kan");
             }
-
-            else 
+            else
             {
                 SetCurrentWord(removal.GetResult());
             }
@@ -235,7 +230,7 @@ class Context : IContext, IVisitable
             removePrefixes();
             if (dictionary.Contains(currentWord))
                 return;
-            
+
             this.removals = removals.ToList();
             SetCurrentWord(currentWord);
         }
@@ -243,14 +238,14 @@ class Context : IContext, IVisitable
 
     protected bool isSuffixRemoval(IRemoval removal)
     {
-        return removal.GetAffixType() == "DS" 
-               || removal.GetAffixType() == "PP"
-               || removal.GetAffixType() == "P";
+        return removal.GetAffixType() == "DS"
+            || removal.GetAffixType() == "PP"
+            || removal.GetAffixType() == "P";
     }
 
     protected void restorePrefix()
     {
-        foreach(var removal in removals)
+        foreach (var removal in removals)
         {
             if (removal.GetAffixType() == "DP")
             {
@@ -259,11 +254,11 @@ class Context : IContext, IVisitable
             }
         }
 
-        for (int i = removals.Count()-1; i > 0; --i)
+        for (int i = removals.Count() - 1; i > 0; --i)
         {
             var removal = removals[i];
             if (removal.GetAffixType() == "DP")
-               removals.RemoveAt(i);
+                removals.RemoveAt(i);
         }
     }
 }

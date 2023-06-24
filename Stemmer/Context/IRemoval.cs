@@ -2,7 +2,8 @@ using Visitor;
 
 namespace Context;
 
-public interface IRemoval {
+public interface IRemoval
+{
     public IVisitor GetVisitor();
 
     public string GetSubject();

@@ -9,7 +9,7 @@ class DisambiguatorPrefixRule6b : IDisambiguator
         var match = Regex.Match(word, @"^ter([aiueo].*)$");
         if (!match.Success)
             return null;
- 
+
         return "r" + match.Groups[1].Value;
     }
 }

@@ -12,7 +12,7 @@ class DisambiguatorPrefixRule7 : IDisambiguator
 
         if (match.Groups[1].Value == "r")
             return null;
- 
+
         return match.Groups[1].Value + "er" + match.Groups[2].Value;
     }
 }

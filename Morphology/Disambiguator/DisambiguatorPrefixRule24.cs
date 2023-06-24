@@ -9,13 +9,14 @@ class DisambiguatorPrefixRule24 : IDisambiguator
         var match = Regex.Match(word, @"^per([bcdfghjklmnpqrstvwxyz])([a-z])er([aiueo])(.*)$");
         if (!match.Success)
             return null;
-        
+
         if (match.Groups[1].Value == "r")
             return null;
 
-        return match.Groups[1].Value 
-               + match.Groups[2].Value 
-               + "er" + match.Groups[3].Value 
-               + match.Groups[4].Value;
+        return match.Groups[1].Value
+            + match.Groups[2].Value
+            + "er"
+            + match.Groups[3].Value
+            + match.Groups[4].Value;
     }
 }

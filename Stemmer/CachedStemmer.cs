@@ -1,6 +1,7 @@
 using Stemmer;
 
-public class CachedStemmer : IStemmer {
+public class CachedStemmer : IStemmer
+{
     protected IDictionary<string, string> cache;
     protected IStemmer delegatedStemmer;
 
@@ -16,13 +17,12 @@ public class CachedStemmer : IStemmer {
 
         List<string> stems = new();
 
-        foreach(string word in normalized.Split(' '))
+        foreach (string word in normalized.Split(' '))
         {
             if (cache.ContainsKey(word))
             {
                 stems.Add(word);
             }
-
             else
             {
                 string stem = delegatedStemmer.Stem(word);
@@ -30,7 +30,6 @@ public class CachedStemmer : IStemmer {
                 cache[word] = stem;
                 stems.Add(stem);
             }
-
         }
 
         return String.Join(' ', stems);

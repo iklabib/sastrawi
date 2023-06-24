@@ -9,7 +9,7 @@ class DisambiguatorPrefixRule1b : IDisambiguator
         var match = Regex.Match(word, "^ber([aiueo].*)$");
         if (match.Success)
             return "r" + match.Groups[1].Value;
-            
+
         return null;
     }
 }

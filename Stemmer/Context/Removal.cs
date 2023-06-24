@@ -42,9 +42,13 @@ class Removal : IRemoval
 
     public IRemoval Clone()
     {
-        return new Removal(this.visitor, this.subject, 
-                           this.result, this.removedPart, 
-                           this.affixType);
+        return new Removal(
+            this.visitor,
+            this.subject,
+            this.result,
+            this.removedPart,
+            this.affixType
+        );
     }
 
     public string GetRemovedPart()
@@ -56,6 +60,4 @@ class Removal : IRemoval
     {
         return affixType;
     }
-
-
 }

@@ -5,10 +5,11 @@ using System.Text.RegularExpressions;
 
 namespace Stemmer;
 
-public class Stemmer : IStemmer 
+public class Stemmer : IStemmer
 {
     protected HashSet<string> dictionary;
     protected VisitorProvider visitorProvider;
+
     public Stemmer(HashSet<string> dictionary)
     {
         this.dictionary = dictionary;
@@ -25,7 +26,7 @@ public class Stemmer : IStemmer
         string normalized = TextNormalizer.NormalizeText(text);
         var stems = new List<string>();
 
-        foreach(string word in normalized.Split(' '))
+        foreach (string word in normalized.Split(' '))
         {
             stems.Add(StemWord(word));
         }
@@ -56,7 +57,7 @@ public class Stemmer : IStemmer
 
         // malaikat-malaikat-nya -> malaikat malaikat-nya
         string suffix = match.Groups[2].Value;
-        string[] suffixes = new string[] {"ku", "mu", "nya", "lah", "kah", "tah", "pun"};
+        string[] suffixes = new string[] { "ku", "mu", "nya", "lah", "kah", "tah", "pun" };
 
         string word1 = match.Groups[1].Value;
         string word2 = match.Groups[2].Value;
@@ -64,8 +65,8 @@ public class Stemmer : IStemmer
         match = Regex.Match(word1, @"^(.*)-(.*)$");
         if (suffixes.Contains(word2) && match.Success)
         {
-           word1 = match.Groups[1].Value;
-           word2 = match.Groups[2].Value + "-" + word2;
+            word1 = match.Groups[1].Value;
+            word2 = match.Groups[2].Value + "-" + word2;
         }
 
         // berbalas-balasan -> balas

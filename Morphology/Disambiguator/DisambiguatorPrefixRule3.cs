@@ -12,8 +12,11 @@ class DisambiguatorPrefixRule3 : IDisambiguator
 
         if (match.Groups[1].Value == "r")
             return null;
-        
-        return match.Groups[1].Value + match.Groups[2].Value 
-               + "er" + match.Groups[3].Value + match.Groups[4].Value;
+
+        return match.Groups[1].Value
+            + match.Groups[2].Value
+            + "er"
+            + match.Groups[3].Value
+            + match.Groups[4].Value;
     }
 }

@@ -9,7 +9,7 @@ class DisambiguatorPrefixRule30c : IDisambiguator
         var match = Regex.Match(word, @"^penge(.*)$");
         if (!match.Success)
             return null;
-        
+
         return match.Groups[1].Value;
     }
 }

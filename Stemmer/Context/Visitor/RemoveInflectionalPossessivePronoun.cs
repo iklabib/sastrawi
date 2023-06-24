@@ -14,13 +14,7 @@ class RemoveInflectionalPossessivePronoun : IVisitor
 
         Regex regex = new Regex(result);
         string removedPart = regex.Replace(context.GetCurrentWord(), "", 1);
-        IRemoval removal = new Removal(
-            this, 
-            context.GetCurrentWord(),
-            result,
-            removedPart,
-            "PP"
-        );
+        IRemoval removal = new Removal(this, context.GetCurrentWord(), result, removedPart, "PP");
 
         context.AddRemoval(removal);
         context.SetCurrentWord(result);

@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace Stemmer;
 
-public class StemmerFactory 
+public class StemmerFactory
 {
     public CachedStemmer CreateStemmer()
     {
@@ -22,10 +22,15 @@ public class StemmerFactory
 
     protected string[] GetWordsFromFile()
     {
-        var dataDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        string dictionaryFile = Path.Combine(dataDir, "kata-dasar.txt");
+        string dictionaryFile = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory,
+            "data",
+            "kata-dasar.txt"
+        );
         if (!System.IO.File.Exists(dictionaryFile))
-            throw new Exception("Data directory is missing. It seems that your installation is corrupted.");
+            throw new FileNotFoundException(
+                "Data directory is missing. It seems that your installation is corrupted."
+            );
 
         using (var file = new StreamReader(dictionaryFile))
         {
