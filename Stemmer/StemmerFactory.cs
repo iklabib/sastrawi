@@ -16,8 +16,9 @@ public class StemmerFactory
 
     public HashSet<string> CreateDefaultDictionary()
     {
-        var words = GetWordsFromFile();
-        return words.ToHashSet();
+        var words = GetWordsFromFile().ToHashSet();
+        words.Remove(""); // remove empty string if exist
+        return words;
     }
 
     protected string[] GetWordsFromFile()
@@ -32,9 +33,6 @@ public class StemmerFactory
                 "Data directory is missing. It seems that your installation is corrupted."
             );
 
-        using (var file = new StreamReader(dictionaryFile))
-        {
-            return file.ReadToEnd().Trim().Split().ToArray();
-        }
+        return System.IO.File.ReadAllText(dictionaryFile).Trim().Split().ToArray();
     }
 }

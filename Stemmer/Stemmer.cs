@@ -54,11 +54,8 @@ public class Stemmer : IStemmer
         var match = Regex.Match(plural, @"^(.*)-(.*)$");
         if (!match.Success)
             return plural;
-        
-        string[] words = match.Groups.Values
-                                     .Skip(1)
-                                     .Select(el => el.Value)
-                                     .ToArray();
+
+        string[] words = match.Groups.Values.Skip(1).Select(el => el.Value).ToArray();
 
         string suffix = words[1];
         string[] suffixes = new string[] { "ku", "mu", "nya", "lah", "kah", "tah", "pun" };

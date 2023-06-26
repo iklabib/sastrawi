@@ -14,10 +14,7 @@ abstract class AbstractDisambiguatePrefixRule : IVisitor
         foreach (var disambiguator in disambiguators)
         {
             result = disambiguator.Disambiguate(context.GetCurrentWord());
-            if (String.IsNullOrEmpty(result))
-                continue;
-
-            if (dictionary.Contains(result))
+            if (!String.IsNullOrEmpty(result) && dictionary.Contains(result))
                 break;
         }
 

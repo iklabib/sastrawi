@@ -177,7 +177,7 @@ class Context : IContext, IVisitable
         return null;
     }
 
-    protected string acceptPrefixVisitors(List<IVisitor> visitors)
+    protected string? acceptPrefixVisitors(List<IVisitor> visitors)
     {
         int removalCount = removals.Count();
         foreach (var visitor in visitors)
@@ -190,10 +190,10 @@ class Context : IContext, IVisitable
                 return currentWord;
 
             if (removals.Count() > removalCount)
-                return "";
+                return null;
         }
 
-        return "";
+        return null;
     }
 
     protected void loopPengembalianAkhiran()
