@@ -8,7 +8,7 @@ public class TextNormalizer
     {
         var flags = RegexOptions.Multiline | RegexOptions.IgnoreCase;
         string normalized = Regex.Replace(text.ToLower(), @"[^a-z0-9 -]", " ", flags);
-        normalized = Regex.Replace(normalized, @"[^a-z0-9 -]", " ", flags);
+        normalized = Regex.Replace(normalized, @"( +)", " ", flags);
         return normalized.Trim();
     }
 }

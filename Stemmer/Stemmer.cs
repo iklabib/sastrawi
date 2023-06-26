@@ -49,39 +49,40 @@ public class Stemmer : IStemmer
         return word.Contains('-');
     }
 
-    protected string StemPluralWord(string word)
+    protected string StemPluralWord(string plural)
     {
-        var match = Regex.Match(word, @"^(.*)-(.*)$");
+        var match = Regex.Match(plural, @"^(.*)-(.*)$");
         if (!match.Success)
-            return word;
+            return plural;
+        
+        string[] words = match.Groups.Values
+                                     .Skip(1)
+                                     .Select(el => el.Value)
+                                     .ToArray();
 
-        // malaikat-malaikat-nya -> malaikat malaikat-nya
-        string suffix = match.Groups[2].Value;
+        string suffix = words[1];
         string[] suffixes = new string[] { "ku", "mu", "nya", "lah", "kah", "tah", "pun" };
 
-        string word1 = match.Groups[1].Value;
-        string word2 = match.Groups[2].Value;
-
-        match = Regex.Match(word1, @"^(.*)-(.*)$");
-        if (suffixes.Contains(word2) && match.Success)
+        match = Regex.Match(words[0], @"^(.*)-(.*)$");
+        if (suffixes.Contains(words[1]) && match.Success)
         {
-            word1 = match.Groups[1].Value;
-            word2 = match.Groups[2].Value + "-" + word2;
+            words[0] = match.Groups[1].Value;
+            words[1] = match.Groups[2].Value + "-" + suffix;
         }
 
         // berbalas-balasan -> balas
-        string rootWord1 = StemSingularWord(word1);
-        string rootWord2 = StemSingularWord(word2);
+        string rootWord1 = StemSingularWord(words[0]);
+        string rootWord2 = StemSingularWord(words[1]);
 
-        if (dictionary.Contains(word2) && rootWord2 == word2)
+        if (!dictionary.Contains(words[1]) && rootWord2 == words[1])
         {
-            rootWord2 = StemSingularWord("me" + word2);
+            rootWord2 = StemSingularWord("me" + words[1]);
         }
 
         if (rootWord1 == rootWord2)
             return rootWord1;
 
-        return word;
+        return plural;
     }
 
     protected string StemSingularWord(string word)

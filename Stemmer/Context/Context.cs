@@ -87,9 +87,6 @@ class Context : IContext, IVisitable
     {
         // step 1 - 5
         startStemmingProcess();
-        if (currentWord == "")
-            this.result = originalWord;
-
         // step 6
         if (dictionary.Contains(currentWord))
             this.result = currentWord;
@@ -166,7 +163,7 @@ class Context : IContext, IVisitable
         visitor.Visit(this);
     }
 
-    protected string acceptVisitors(List<IVisitor> visitors)
+    protected string? acceptVisitors(List<IVisitor> visitors)
     {
         foreach (var visitor in visitors)
         {
@@ -177,7 +174,7 @@ class Context : IContext, IVisitable
             if (ProcessIsStopped())
                 return currentWord;
         }
-        return "";
+        return null;
     }
 
     protected string acceptPrefixVisitors(List<IVisitor> visitors)
@@ -207,7 +204,7 @@ class Context : IContext, IVisitable
         var removals = this.removals.AsEnumerable().Reverse();
         foreach (var removal in removals)
         {
-            if (isSuffixRemoval(removal))
+            if (!isSuffixRemoval(removal))
                 continue;
 
             if (removal.GetRemovedPart() == "kan")
@@ -216,19 +213,19 @@ class Context : IContext, IVisitable
 
                 // step 4, 5
                 removePrefixes();
-                if (dictionary.Contains(currentWord))
+                if (dictionary.Contains(GetCurrentWord()))
                     return;
 
                 SetCurrentWord(removal.GetResult() + "kan");
             }
             else
             {
-                SetCurrentWord(removal.GetResult());
+                SetCurrentWord(removal.GetSubject());
             }
 
             // step 4, 5
             removePrefixes();
-            if (dictionary.Contains(currentWord))
+            if (dictionary.Contains(GetCurrentWord()))
                 return;
 
             this.removals = removals.ToList();
