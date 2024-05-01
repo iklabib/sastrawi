@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace Disambiguator;
 
-class DisambiguatorPrefixRule17c : IDisambiguator
+public class DisambiguatorPrefixRule17c : IDisambiguator
 {
     public string? Disambiguate(string word)
     {
