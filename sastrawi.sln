@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sastrawi", "sastrawi.csproj", "{677673A0-A5AA-42CE-8801-DCD366DC3D57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sastrawi", "Sastrawi\sastrawi.csproj", "{1F57AC72-2F54-4B60-912F-B06E7AEE87E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sastrawi.Tests", "Sastrawi.Tests\Sastrawi.Tests.csproj", "{4905B69E-766D-4FAF-ACA8-44640FB477FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,14 @@ Global
 		{677673A0-A5AA-42CE-8801-DCD366DC3D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{677673A0-A5AA-42CE-8801-DCD366DC3D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{677673A0-A5AA-42CE-8801-DCD366DC3D57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F57AC72-2F54-4B60-912F-B06E7AEE87E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F57AC72-2F54-4B60-912F-B06E7AEE87E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F57AC72-2F54-4B60-912F-B06E7AEE87E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F57AC72-2F54-4B60-912F-B06E7AEE87E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4905B69E-766D-4FAF-ACA8-44640FB477FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4905B69E-766D-4FAF-ACA8-44640FB477FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4905B69E-766D-4FAF-ACA8-44640FB477FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4905B69E-766D-4FAF-ACA8-44640FB477FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
