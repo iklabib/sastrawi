@@ -24,12 +24,12 @@ public class InvalidAffixPairSpecification : ISpecification
             @"^per(.*)an$",
         };
 
-        bool contains = false;
         foreach (string invalidAffix in invalidAffixes)
         {
-            contains = contains || Regex.Match(word, invalidAffix).Success;
+            if (Regex.Match(word, invalidAffix).Success)
+                return true;
         }
 
-        return contains;
+        return false;
     }
 }
