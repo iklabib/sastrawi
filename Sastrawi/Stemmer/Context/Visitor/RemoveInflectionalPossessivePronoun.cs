@@ -1,8 +1,6 @@
 using System.Text.RegularExpressions;
 
-using Context;
-
-namespace Visitor;
+namespace Sastrawi.Stemmer.Context.Visitor;
 
 class RemoveInflectionalPossessivePronoun : IVisitor
 {

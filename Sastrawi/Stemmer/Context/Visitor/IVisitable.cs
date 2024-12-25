@@ -1,4 +1,4 @@
-namespace Visitor;
+namespace Sastrawi.Stemmer.Context.Visitor;
 
 public interface IVisitable
 {

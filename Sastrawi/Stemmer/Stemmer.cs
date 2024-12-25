@@ -1,9 +1,8 @@
-using Context;
-using Visitor;
-using Filter;
 using System.Text.RegularExpressions;
+using Sastrawi.Stemmer.Context.Visitor;
+using Sastrawi.Stemmer.Filter;
 
-namespace Stemmer;
+namespace Sastrawi.Stemmer;
 
 public class Stemmer : IStemmer
 {

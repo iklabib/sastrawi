@@ -1,7 +1,7 @@
-using Context;
-using Visitor;
 using System.Text.RegularExpressions;
-using Disambiguator;
+using Sastrawi.Morphology.Disambiguator;
+
+namespace Sastrawi.Stemmer.Context.Visitor;
 
 abstract class AbstractDisambiguatePrefixRule : IVisitor
 {
@@ -9,7 +9,7 @@ abstract class AbstractDisambiguatePrefixRule : IVisitor
 
     public void Visit(IContext context)
     {
-        string? result = null;
+        string result = string.Empty;
         var dictionary = context.GetDictionary();
         foreach (var disambiguator in disambiguators)
         {

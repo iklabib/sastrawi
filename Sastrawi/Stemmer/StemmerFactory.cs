@@ -1,6 +1,4 @@
-using System.Reflection;
-
-namespace Stemmer;
+namespace Sastrawi.Stemmer;
 
 public class StemmerFactory
 {

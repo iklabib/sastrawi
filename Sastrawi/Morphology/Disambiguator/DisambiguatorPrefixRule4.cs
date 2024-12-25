@@ -1,13 +1,13 @@
 using System.Text.RegularExpressions;
 
-namespace Disambiguator;
+namespace Sastrawi.Morphology.Disambiguator;
 
 public class DisambiguatorPrefixRule4 : IDisambiguator
 {
-    public string? Disambiguate(string word)
+    public string Disambiguate(string word)
     {
         if (word == "belajar")
             return "ajar";
-        return null;
+        return string.Empty;
     }
 }

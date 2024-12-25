@@ -1,6 +1,4 @@
-using Context;
-
-namespace Visitor;
+namespace Sastrawi.Stemmer.Context.Visitor;
 
 class DontStemStopWord : IVisitor
 {

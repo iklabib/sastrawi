@@ -1,4 +1,4 @@
-namespace Specification;
+namespace Sastrawi.Stemmer.Specification;
 
 public interface ISpecification
 {

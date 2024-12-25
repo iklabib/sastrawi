@@ -1,4 +1,4 @@
-using Morphology;
+using Sastrawi.Morphology;
 
 namespace Sastrawi.Tests.UnitTests.Morphology;
 

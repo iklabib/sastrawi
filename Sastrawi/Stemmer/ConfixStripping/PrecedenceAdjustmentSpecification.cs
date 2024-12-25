@@ -1,7 +1,7 @@
-using Specification;
 using System.Text.RegularExpressions;
+using Sastrawi.Specification;
 
-namespace ConfixStripping;
+namespace Sastrawi.Stemmer.ConfixStripping;
 
 class PrecedenceAdjustmentSpecification : ISpecification
 {

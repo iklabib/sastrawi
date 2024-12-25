@@ -1,5 +1,5 @@
 using Xunit;
-using Disambiguator;
+using Sastrawi.Morphology.Disambiguator;
 
 namespace Sastrawi.Tests.UnitTests.Morphology.Disambiguator;
 
@@ -14,6 +14,6 @@ public class DisambiguatorPrefixRule10Test
         Assert.Equal("warnai", disambiguator.Disambiguate("mewarnai"));
         Assert.Equal("yakini", disambiguator.Disambiguate("meyakini"));
 
-        Assert.Null(disambiguator.Disambiguate("menyanyangi"));
+        Assert.Empty(disambiguator.Disambiguate("menyanyangi"));
     }
 }

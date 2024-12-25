@@ -1,4 +1,4 @@
-using Disambiguator;
+using Sastrawi.Morphology.Disambiguator;
 
 namespace Sastrawi.Tests.UnitTests.Morphology.Disambiguator;
 
@@ -9,6 +9,6 @@ public class DisambiguatorPrefixRule4Test
     {
         var disambiguator = new DisambiguatorPrefixRule4();
         Assert.Equal("ajar", disambiguator.Disambiguate("belajar"));
-        Assert.Null(disambiguator.Disambiguate("bekerja"));
+        Assert.Empty(disambiguator.Disambiguate("bekerja"));
     }
 }

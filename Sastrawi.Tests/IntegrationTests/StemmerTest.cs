@@ -1,4 +1,5 @@
-using Stemmer;
+using Sastrawi.Stemmer;
+
 namespace Sastrawi.Tests.IntegrationTests;
 
 public class StemmerTest

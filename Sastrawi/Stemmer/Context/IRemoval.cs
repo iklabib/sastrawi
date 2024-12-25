@@ -1,6 +1,7 @@
-using Visitor;
+using Sastrawi.Stemmer.Context.Visitor;
 
-namespace Context;
+namespace Sastrawi.Stemmer.Context;
+
 
 public interface IRemoval
 {

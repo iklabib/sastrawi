@@ -1,4 +1,6 @@
-using Stemmer;
+using Sastrawi.Stemmer.Filter;
+
+namespace Sastrawi.Stemmer;
 
 public class CachedStemmer : IStemmer
 {
@@ -13,7 +15,7 @@ public class CachedStemmer : IStemmer
 
     public string Stem(string text)
     {
-        string normalized = Filter.TextNormalizer.NormalizeText(text);
+        string normalized = TextNormalizer.NormalizeText(text);
 
         List<string> stems = new();
 
@@ -21,7 +23,7 @@ public class CachedStemmer : IStemmer
         {
             if (cache.ContainsKey(word))
             {
-                stems.Add(word);
+                stems.Add(cache[word]);
             }
             else
             {
@@ -32,13 +34,12 @@ public class CachedStemmer : IStemmer
             }
         }
 
-        return String.Join(' ', stems);
+        return string.Join(' ', stems);
     }
 
     public IDictionary<string, string> GetCache()
     {
         // deep copy
-        // return cache.ToDictionary(entry => entry.Key, entry => entry.Value);
-        return cache;
+        return cache.ToDictionary(entry => entry.Key, entry => entry.Value);
     }
 }

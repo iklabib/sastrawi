@@ -1,4 +1,4 @@
-namespace Stemmer;
+namespace Sastrawi.Stemmer;
 
 public interface IStemmer
 {

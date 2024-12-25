@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Filter;
+namespace Sastrawi.Stemmer.Filter;
 
 public class TextNormalizer
 {

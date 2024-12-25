@@ -1,7 +1,7 @@
-using Visitor;
-using ConfixStripping;
+using Sastrawi.Stemmer.ConfixStripping;
+using Sastrawi.Stemmer.Context.Visitor;
 
-namespace Context;
+namespace Sastrawi.Stemmer.Context;
 
 class Context : IContext, IVisitable
 {
@@ -163,7 +163,7 @@ class Context : IContext, IVisitable
         visitor.Visit(this);
     }
 
-    protected string? acceptVisitors(List<IVisitor> visitors)
+    protected string acceptVisitors(List<IVisitor> visitors)
     {
         foreach (var visitor in visitors)
         {
@@ -174,10 +174,10 @@ class Context : IContext, IVisitable
             if (ProcessIsStopped())
                 return currentWord;
         }
-        return null;
+        return string.Empty;
     }
 
-    protected string? acceptPrefixVisitors(List<IVisitor> visitors)
+    protected string acceptPrefixVisitors(List<IVisitor> visitors)
     {
         int removalCount = removals.Count();
         foreach (var visitor in visitors)
@@ -190,10 +190,10 @@ class Context : IContext, IVisitable
                 return currentWord;
 
             if (removals.Count() > removalCount)
-                return null;
+                return string.Empty;
         }
 
-        return null;
+        return string.Empty;
     }
 
     protected void loopPengembalianAkhiran()

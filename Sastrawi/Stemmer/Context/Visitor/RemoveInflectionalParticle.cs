@@ -1,7 +1,6 @@
-using Context;
 using System.Text.RegularExpressions;
 
-namespace Visitor;
+namespace Sastrawi.Stemmer.Context.Visitor;
 
 class RemoveInflectionalParticle : IVisitor
 {

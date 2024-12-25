@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
+using Sastrawi.Specification;
 
-namespace Morphology;
+namespace Sastrawi.Morphology;
 
 public class InvalidAffixPairSpecification : ISpecification
 {

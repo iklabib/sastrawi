@@ -1,6 +1,6 @@
-using Visitor;
+using Sastrawi.Stemmer.Context.Visitor;
 
-namespace Context;
+namespace Sastrawi.Stemmer.Context;
 
 class Removal : IRemoval
 {

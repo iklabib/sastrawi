@@ -1,6 +1,6 @@
-using Morphology;
+using Sastrawi.Morphology.Disambiguator;
 
-namespace Visitor;
+namespace Sastrawi.Stemmer.Context.Visitor;
 
 public class VisitorProvider
 {
@@ -24,356 +24,356 @@ public class VisitorProvider
         prefixVisitors.Add(new RemovePlainPrefix());
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule1a(),
-                    new Disambiguator.DisambiguatorPrefixRule1b()
+                    new DisambiguatorPrefixRule1a(),
+                    new DisambiguatorPrefixRule1b()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule2()
+                    new DisambiguatorPrefixRule2()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule3()
+                    new DisambiguatorPrefixRule3()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule4()
+                    new DisambiguatorPrefixRule4()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule5()
+                    new DisambiguatorPrefixRule5()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule6a(),
-                    new Disambiguator.DisambiguatorPrefixRule6b()
-                }
-            )
-        );
-
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule7()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule8()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule9()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule10()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule11()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule12()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule13a(),
-                    new Disambiguator.DisambiguatorPrefixRule13b()
+                    new DisambiguatorPrefixRule6a(),
+                    new DisambiguatorPrefixRule6b()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule14()
+                    new DisambiguatorPrefixRule7()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule15a(),
-                    new Disambiguator.DisambiguatorPrefixRule15b()
+                    new DisambiguatorPrefixRule8()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule16()
-                }
-            )
-        );
-
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule17a(),
-                    new Disambiguator.DisambiguatorPrefixRule17b(),
-                    new Disambiguator.DisambiguatorPrefixRule17c(),
-                    new Disambiguator.DisambiguatorPrefixRule17d()
-                }
-            )
-        );
-
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule18a(),
-                    new Disambiguator.DisambiguatorPrefixRule18b()
+                    new DisambiguatorPrefixRule9()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule19()
+                    new DisambiguatorPrefixRule10()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule20()
+                    new DisambiguatorPrefixRule11()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule12()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule13a(),
+                    new DisambiguatorPrefixRule13b()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule21a(),
-                    new Disambiguator.DisambiguatorPrefixRule21b()
+                    new DisambiguatorPrefixRule14()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule23()
+                    new DisambiguatorPrefixRule15a(),
+                    new DisambiguatorPrefixRule15b()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule24()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule25()
+                    new DisambiguatorPrefixRule16()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule26a(),
-                    new Disambiguator.DisambiguatorPrefixRule26b()
+                    new DisambiguatorPrefixRule17a(),
+                    new DisambiguatorPrefixRule17b(),
+                    new DisambiguatorPrefixRule17c(),
+                    new DisambiguatorPrefixRule17d()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule27()
+                    new DisambiguatorPrefixRule18a(),
+                    new DisambiguatorPrefixRule18b()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule19()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule20()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule28a(),
-                    new Disambiguator.DisambiguatorPrefixRule28b()
+                    new DisambiguatorPrefixRule21a(),
+                    new DisambiguatorPrefixRule21b()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule23()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule24()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule25()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule29()
+                    new DisambiguatorPrefixRule26a(),
+                    new DisambiguatorPrefixRule26b()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule30a(),
-                    new Disambiguator.DisambiguatorPrefixRule30b(),
-                    new Disambiguator.DisambiguatorPrefixRule30c()
+                    new DisambiguatorPrefixRule27()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule31a(),
-                    new Disambiguator.DisambiguatorPrefixRule31b()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule32()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule34()
+                    new DisambiguatorPrefixRule28a(),
+                    new DisambiguatorPrefixRule28b()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule35()
-                }
-            )
-        );
-        prefixVisitors.Add(
-            new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
-                {
-                    new Disambiguator.DisambiguatorPrefixRule36()
+                    new DisambiguatorPrefixRule29()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule37a(),
-                    new Disambiguator.DisambiguatorPrefixRule37b()
+                    new DisambiguatorPrefixRule30a(),
+                    new DisambiguatorPrefixRule30b(),
+                    new DisambiguatorPrefixRule30c()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule38a(),
-                    new Disambiguator.DisambiguatorPrefixRule38b()
+                    new DisambiguatorPrefixRule31a(),
+                    new DisambiguatorPrefixRule31b()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule32()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule34()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule39a(),
-                    new Disambiguator.DisambiguatorPrefixRule39b()
+                    new DisambiguatorPrefixRule35()
+                }
+            )
+        );
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule36()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule40a(),
-                    new Disambiguator.DisambiguatorPrefixRule40b()
+                    new DisambiguatorPrefixRule37a(),
+                    new DisambiguatorPrefixRule37b()
                 }
             )
         );
 
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule41()
+                    new DisambiguatorPrefixRule38a(),
+                    new DisambiguatorPrefixRule38b()
+                }
+            )
+        );
+
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule39a(),
+                    new DisambiguatorPrefixRule39b()
+                }
+            )
+        );
+
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule40a(),
+                    new DisambiguatorPrefixRule40b()
+                }
+            )
+        );
+
+        prefixVisitors.Add(
+            new PrefixDisambiguator(
+                new List<IDisambiguator>
+                {
+                    new DisambiguatorPrefixRule41()
                 }
             )
         );
         prefixVisitors.Add(
             new PrefixDisambiguator(
-                new List<Disambiguator.IDisambiguator>
+                new List<IDisambiguator>
                 {
-                    new Disambiguator.DisambiguatorPrefixRule42()
+                    new DisambiguatorPrefixRule42()
                 }
             )
         );

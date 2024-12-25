@@ -1,4 +1,4 @@
-namespace Context;
+namespace Sastrawi.Stemmer.Context;
 
 public interface IContext
 {

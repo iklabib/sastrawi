@@ -1,6 +1,7 @@
-using Disambiguator;
+using Sastrawi.Morphology.Disambiguator;
 
-namespace Visitor;
+namespace Sastrawi.Stemmer.Context.Visitor;
+
 
 class PrefixDisambiguator : AbstractDisambiguatePrefixRule, IVisitor
 {

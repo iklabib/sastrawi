@@ -1,4 +1,4 @@
-using Disambiguator;
+using Sastrawi.Morphology.Disambiguator;
 
 namespace Sastrawi.Tests.UnitTests.Morphology.Disambiguator;
 
@@ -11,6 +11,6 @@ public class DisambiguatorPrefixRule15bTest
         Assert.Equal("tulis", disambiguator.Disambiguate("menulis"));
         Assert.Equal("tari", disambiguator.Disambiguate("menari"));
 
-        Assert.Null(disambiguator.Disambiguate("menyayangi"));
+        Assert.Empty(disambiguator.Disambiguate("menyayangi"));
     }
 }
